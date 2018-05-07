@@ -1,7 +1,5 @@
 const scenarios = [
-  'full', 
   'full-karma-airbnb', 
-  'minimal'
 ]
 
 const index = scenarios.indexOf(process.env.VUE_TEMPL_TEST)
