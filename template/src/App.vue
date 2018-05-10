@@ -1,34 +1,42 @@
-<template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    {{#router}}
-    <router-view/>
-    {{else}}
-    <HelloWorld/>
-    {{/router}}
-  </div>
+<template lang="pug">
+v-app
+  app-toolbar(
+    :tabs='tabs',
+    :title='title',
+    user-icon='account_circle'
+  )
+
+  keep-alive
+    router-view
 </template>
 
-<script>
-{{#unless router}}
-import HelloWorld from './components/HelloWorld'
+<style lang="stylus">
+html,body,.application,.application--wrap
+  height 100vh
+  overflow hidden
+</style>
 
-{{/unless}}
+<script>
+import ResonantGeo from 'resonantgeo';
+import Vue from 'vue';
+
+Vue.use(ResonantGeo);
+
 export default {
-  name: 'App'{{#router}}{{else}},
-  components: {
-    HelloWorld
-  }{{/router}}
+  name: 'app',
+  data () {
+    return {
+      title: 'ResonantGEO template',
+      tabs: [{
+        title: 'Hello',
+        route: '/hello',
+        icon: 'home',
+      }, {
+        title: 'Map',
+        route: '/map',
+        icon: 'zoom_out_map',
+      }],
+    }
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
