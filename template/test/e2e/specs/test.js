@@ -2,11 +2,11 @@
 // http://nightwatchjs.org/guide#usage
 
 module.exports = {
-  'default e2e tests': function {{#if_eq lintConfig "airbnb"}}test{{/if_eq}}(browser) {
+  'default e2e tests': function test(browser) {
     // automatically uses dev Server port from /config.index.js
     // default: http://localhost:8080
     // see nightwatch.conf.js
-    const devServer = browser.globals.devServerURL
+    const devServer = browser.globals.devServerURL;
 
     browser
       .url(devServer)
@@ -14,6 +14,6 @@ module.exports = {
       .assert.elementPresent('#hello')
       .assert.containsText('h2', 'Essential Links')
       .assert.elementCount('img', 1)
-      .end()
-  }
-}
+      .end();
+  },
+};
